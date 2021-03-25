@@ -30,22 +30,35 @@ CREATE TABLE ansatt
 	CONSTRAINT avdeling_pk PRIMARY KEY (avdelingId)
 );
  
+--INSERT INTO
+--  ansatt(ansattId, brukernavn, fornavn, etternavn, ansettelsedato, stilling, maanedslonn, avdelingId) 
+--VALUES
+  -- (1, 'Jofe', 'Joacim', 'Fredriksen', '14.02.21', 'Utvikler', 600000, 1),
+  -- (2, 'FyGe', 'Geir', 'Janssen', '24.01.20', 'Regnskapsfoerer', 850000, 1 ),
+  -- (3, 'Kain', 'Kai', 'Nilson', '08.01.16', 'CEO', 1000000, 1),
+  -- (4, 'LaMa', 'Lars', 'Lama', '14.03.21', 'SCRUM Master', 800000, 2),
+  -- (5, 'HaKa', 'Hans', 'Karlsen', '14.02.21', 'Senior utvikler', 750000, 2),
+  -- (6, 'Guma', 'Marcus', 'Gundersen', '24.03.21', 'Utvikler', 600000, 2),
+  -- (7, 'Joke', 'Joakim', 'Olsen', '04.06.16', 'Markedsjef', 800000, 3),
+  -- (8, 'Jack', 'Jack', 'Willson', '14.06.16', 'Senior utvikler', 750000, 3),
+  -- (9, 'Akos', 'Alex', 'Svendsen', '14.06.16', 'Økonom', 850000, 3),
+  -- (10, 'TaHa', 'Thale', 'Halvorsen', '14.06.20', 'Utvikler', 600000, 1);
+
+
+--Ny innsettning av verdier, har tatt bort ansattId fordi det skapte mye problmer     
 INSERT INTO
-  ansatt(ansattId, brukernavn, fornavn, etternavn, ansettelsedato, stilling, maanedslonn, avdelingId) 
+  ansatt(brukernavn, fornavn, etternavn, ansettelsedato, stilling, maanedslonn, avdelingId) 
 VALUES
-    (1, 'Jofe', 'Joacim', 'Fredriksen', '14.02.21', 'Utvikler', 600000, 1),
-    (2, 'FyGe', 'Geir', 'Janssen', '24.01.20', 'Regnskapsfoerer', 850000, 1 ),
-    (3, 'Kain', 'Kai', 'Nilson', '08.01.16', 'CEO', 1000000, 1),
-    (4, 'LaMa', 'Lars', 'Lama', '14.03.21', 'SCRUM Master', 800000, 2),
-    (5, 'HaKa', 'Hans', 'Karlsen', '14.02.21', 'Senior utvikler', 750000, 2),
-    (6, 'Guma', 'Marcus', 'Gundersen', '24.03.21', 'Utvikler', 600000, 2),
-    (7, 'Joke', 'Joakim', 'Olsen', '04.06.16', 'Markedsjef', 800000, 3),
-    (8, 'Jack', 'Jack', 'Willson', '14.06.16', 'Senior utvikler', 750000, 3),
-    (9, 'Akos', 'Alex', 'Svendsen', '14.06.16', 'Økonom', 850000, 3),
-    (10, 'TaHa', 'Thale', 'Halvorsen', '14.06.20', 'Utvikler', 600000, 1);
-    
-
-
+    ('Jofe', 'Joacim', 'Fredriksen', '14.02.21', 'Utvikler', 600000, 1),
+    ('FyGe', 'Geir', 'Janssen', '24.01.20', 'Regnskapsfoerer', 850000, 1 ),
+    ('Kain', 'Kai', 'Nilson', '08.01.16', 'CEO', 1000000, 1),
+    ('LaMa', 'Lars', 'Lama', '14.03.21', 'SCRUM Master', 800000, 2),
+    ('HaKa', 'Hans', 'Karlsen', '14.02.21', 'Senior utvikler', 750000, 2),
+    ('Guma', 'Marcus', 'Gundersen', '24.03.21', 'Utvikler', 600000, 2),
+    ('Joke', 'Joakim', 'Olsen', '04.06.16', 'Markedsjef', 800000, 3),
+    ('Jack', 'Jack', 'Willson', '14.06.16', 'Senior utvikler', 750000, 3),
+    ('Akos', 'Alex', 'Svendsen', '14.06.16', 'Økonom', 850000, 3),
+    ('TaHa', 'Thale', 'Halvorsen', '14.06.20', 'Utvikler', 600000, 1);
 
 
 INSERT INTO

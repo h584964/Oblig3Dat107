@@ -1,17 +1,14 @@
 package no.hvl.dat107;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +19,7 @@ public class Ansatt {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	private int ansattId;
+//	@Column(unique = true)
 	private String brukernavn;
 	private String fornavn;
 	private String etternavn;
@@ -86,7 +84,7 @@ public class Ansatt {
 	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato,
 			String stilling, int maanedslonn, Avdeling avdeling) {
 
-		//this.ansattId = ansattId;
+//		this.ansattId = ansattId;
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
@@ -100,7 +98,7 @@ public class Ansatt {
 
 	@Override
 	public String toString() {
-		return "Ansatt [brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
+		return "Ansatt [ansattId="+ ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
 				+ etternavn + ", ansettelsedato=" + ansettelsedato + ", stilling=" + stilling + ", maanedslonn="
 				+ maanedslonn + ", avdeling=" + avdeling.getNavn() + "]";
 	}

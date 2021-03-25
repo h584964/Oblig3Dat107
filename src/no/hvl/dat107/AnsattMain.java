@@ -54,6 +54,7 @@ public class AnsattMain {
 				System.out.println("Skriv inn en stilling");
 				stilling = tast.nextLine();
 				ansattDAO.oppdaterStilling(stilling, ansattId);
+				System.out.println("AnsattId: " + ansattId + ", " + "ny stilling er: " + stilling);
 				
 			} else if (valg == 5) {
 				System.out.println("AnsattId?");
@@ -63,6 +64,7 @@ public class AnsattMain {
 				maanedslonn = tast.nextInt();
 				tast.nextLine();
 				ansattDAO.oppdaterLonn(maanedslonn, ansattId);
+				System.out.println();
 				
 			} else if (valg == 6) {
 				System.out.println("Skriv inn et ansattId");
