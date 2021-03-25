@@ -7,10 +7,13 @@ public class AnsattMain {
 
 	public static void main(String[] args) {
 		AnsattDAO ansattDAO = new AnsattDAO();
+		AvdelingDAO avdelingDAO = new AvdelingDAO();
 		
 		boolean run = true;
 		LocalDate ansettelsedato;
-		int ansattId, maanedslonn;
+		int ansattId, maanedslonn, avdelingId, avdelingI;
+		Avdeling avdeling = null;
+		 
 		String brukernavn, fornavn, etternavn, stilling;
 		Scanner tast = new Scanner(System.in);
 		while (run) {
@@ -22,6 +25,7 @@ public class AnsattMain {
 			System.out.println("Tast 4) for oppdatere en ansatt sin stilling");
 			System.out.println("Tast 5) for oppdatere en ansatt sin lønn");
 			System.out.println("Tast 6) for å legge til en ny ansatt");
+			System.out.println("Tast 7) for å finne avdeling med id");
 			System.out.println("Tast 0) for å avslutte");
 			int valg = tast.nextInt();
 			tast.nextLine();
@@ -31,14 +35,14 @@ public class AnsattMain {
 				ansattId = tast.nextInt();
 				tast.nextLine();
 				Ansatt a = ansattDAO.hentAnsattId(ansattId);
-				System.out.println(a);
+				System.out.println(a.toString());
 
 			} else if (valg == 2) {
 				System.out.println("Hva er ansatte sitt brukernavn?");
 				brukernavn = tast.nextLine();
 				
 				Ansatt b = ansattDAO.hentBrukernavn(brukernavn);
-				System.out.println(b);
+				System.out.println(b.toString());
 				
 			} else if (valg == 3) {
 				ansattDAO.skrivUtAlle();
@@ -85,10 +89,21 @@ public class AnsattMain {
 				maanedslonn = tast.nextInt();
 				tast.nextLine();
 				
-				Ansatt a = new Ansatt(ansattId, brukernavn, fornavn, etternavn, ansettelsedato, stilling, maanedslonn);
+				System.out.println("Avdeling");
+				avdelingI = Integer.parseInt(tast.next());
+				tast.nextLine();
+				avdeling = avdelingDAO.finnAvdelingMedId(avdelingI);
+				
+				Ansatt a = new Ansatt(ansattId,brukernavn, fornavn, etternavn, ansettelsedato, stilling, maanedslonn, avdeling);
 				ansattDAO.leggTilNyAnsatt(a);
 				System.out.println(brukernavn + " lagt til med ansattId: " + a.getAnsattId());
-
+				
+			} else if (valg == 7) {
+				System.out.println("AvdelingId?");
+				avdelingId = tast.nextInt();
+				tast.nextLine();
+				avdeling = avdelingDAO.finnAvdelingMedId(avdelingId);
+				System.out.println(avdeling);
 			} else if (valg == 0) {
 				run = false;
 				System.out.println("Programmet avsluttes! Ha en fin dag videre :)");

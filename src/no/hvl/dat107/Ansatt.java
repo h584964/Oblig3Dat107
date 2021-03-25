@@ -5,10 +5,13 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,8 @@ import javax.persistence.Table;
 public class Ansatt {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int ansattId;
 	private String brukernavn;
 	private String fornavn;
@@ -25,7 +30,9 @@ public class Ansatt {
 	private int maanedslonn;
 
 	// Notering
-//	@OneToMany(mappedBy = "ansatt")
+	@ManyToOne
+	@JoinColumn(name = "avdelingId") //, referencedColumnName = "avdelingsId"
+	private Avdeling avdeling;
 //	private List<Ansatt> ansatte;
 
 	public int getAnsattId() {
@@ -52,11 +59,32 @@ public class Ansatt {
 		this.stilling = stilling;
 	}
 	
+	public int getMaanedslonn() {
+		return maanedslonn;
+	}
+
+	public void setMaanedslonn(int maanedslonn) {
+		this.maanedslonn = maanedslonn;
+	}
+	
+	public String getNavn() {
+		return fornavn;
+	}
+	
+	
+	public Avdeling getAvdeling() {
+		return avdeling;
+	}
+
+	public void setAvdeling(Avdeling avdeling) {
+		this.avdeling = avdeling;
+	}
+
 	public Ansatt() {
 		
 	}
 	public Ansatt(int ansattId, String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato,
-			String stilling, int maanedslonn) {
+			String stilling, int maanedslonn, Avdeling avdeling) {
 
 		this.ansattId = ansattId;
 		this.brukernavn = brukernavn;
@@ -65,29 +93,23 @@ public class Ansatt {
 		this.ansettelsedato = ansettelsedato;
 		this.stilling = stilling;
 		this.maanedslonn = maanedslonn;
+		this.avdeling = avdeling;
 
 	}
 
-	
-
-	public int getMaanedslonn() {
-		return maanedslonn;
-	}
-
-	public void setMaanedslonn(int maanedslonn) {
-		this.maanedslonn = maanedslonn;
-	}
 
 	@Override
 	public String toString() {
 		return "Ansatt [ansattId=" + ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
 				+ etternavn + ", ansettelsedato=" + ansettelsedato + ", stilling=" + stilling + ", maanedslonn="
-				+ maanedslonn + "]";
+				+ maanedslonn + ", avdeling=" + avdeling.getNavn() + "]";
 	}
 
 	public void skrivUt() {
 		System.out.println(this);
 	}
+
+	
 
 //	public void leggTilStilling(String stilling) {
 //		ansatte.add(this);
