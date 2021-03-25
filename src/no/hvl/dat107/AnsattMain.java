@@ -94,7 +94,7 @@ public class AnsattMain {
 				tast.nextLine();
 				avdeling = avdelingDAO.finnAvdelingMedId(avdelingI);
 				
-				Ansatt a = new Ansatt(ansattId,brukernavn, fornavn, etternavn, ansettelsedato, stilling, maanedslonn, avdeling);
+				Ansatt a = new Ansatt(brukernavn, fornavn, etternavn, ansettelsedato, stilling, maanedslonn, avdeling);
 				ansattDAO.leggTilNyAnsatt(a);
 				System.out.println(brukernavn + " lagt til med ansattId: " + a.getAnsattId());
 				

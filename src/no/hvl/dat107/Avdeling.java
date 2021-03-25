@@ -18,7 +18,7 @@ public class Avdeling {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int avdelingId; 
+	private int avdelingId;
 	private String navn;
 	
 	

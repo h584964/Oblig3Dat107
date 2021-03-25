@@ -6,11 +6,11 @@ import javax.persistence.Persistence;
 
 public class AvdelingDAO {
 	private EntityManagerFactory emf;
-	
+
 	public AvdelingDAO() {
 		emf = Persistence.createEntityManagerFactory("ansattTest");
 	}
-	
+
 	public Avdeling finnAvdelingMedId(int id) {
 		EntityManager em = emf.createEntityManager();
 
@@ -25,5 +25,7 @@ public class AvdelingDAO {
 
 		return a;
 	}
+
 	
+
 }

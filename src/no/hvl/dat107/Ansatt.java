@@ -31,7 +31,7 @@ public class Ansatt {
 
 	// Notering
 	@ManyToOne
-	@JoinColumn(name = "avdelingId") //, referencedColumnName = "avdelingsId"
+	@JoinColumn(name = "avdelingId" ,referencedColumnName = "avdelingId")
 	private Avdeling avdeling;
 //	private List<Ansatt> ansatte;
 
@@ -83,10 +83,10 @@ public class Ansatt {
 	public Ansatt() {
 		
 	}
-	public Ansatt(int ansattId, String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato,
+	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato,
 			String stilling, int maanedslonn, Avdeling avdeling) {
 
-		this.ansattId = ansattId;
+		//this.ansattId = ansattId;
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
@@ -100,7 +100,7 @@ public class Ansatt {
 
 	@Override
 	public String toString() {
-		return "Ansatt [ansattId=" + ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
+		return "Ansatt [brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
 				+ etternavn + ", ansettelsedato=" + ansettelsedato + ", stilling=" + stilling + ", maanedslonn="
 				+ maanedslonn + ", avdeling=" + avdeling.getNavn() + "]";
 	}
