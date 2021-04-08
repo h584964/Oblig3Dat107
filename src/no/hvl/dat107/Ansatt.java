@@ -1,14 +1,17 @@
 package no.hvl.dat107;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,21 +20,22 @@ public class Ansatt {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private int ansattId;
-//	@Column(unique = true)
-	private String brukernavn;
-	private String fornavn;
-	private String etternavn;
+	private String brukernavn, fornavn, etternavn, stilling;
 	private LocalDate ansettelsedato;
-	private String stilling;
 	private int maanedslonn;
 
 	// Notering
 	@ManyToOne
-	@JoinColumn(name = "avdelingId" ,referencedColumnName = "avdelingId")
+	@JoinColumn(name = "avdelingId", referencedColumnName = "avdelingId")
 	private Avdeling avdeling;
 //	private List<Ansatt> ansatte;
+	
+//	@ManyToMany(mappedBy="ansatte")
+//	private List<Prosjekt> prosjekter;
+//	
+	@OneToMany(mappedBy="ansatt")
+	private List<ProsjektDeltagelse> deltagelser;
 
 	public int getAnsattId() {
 		return ansattId;
@@ -56,7 +60,7 @@ public class Ansatt {
 	public void setStilling(String stilling) {
 		this.stilling = stilling;
 	}
-	
+
 	public int getMaanedslonn() {
 		return maanedslonn;
 	}
@@ -64,12 +68,11 @@ public class Ansatt {
 	public void setMaanedslonn(int maanedslonn) {
 		this.maanedslonn = maanedslonn;
 	}
-	
+
 	public String getNavn() {
 		return fornavn;
 	}
-	
-	
+
 	public Avdeling getAvdeling() {
 		return avdeling;
 	}
@@ -77,14 +80,32 @@ public class Ansatt {
 	public void setAvdeling(Avdeling avdeling) {
 		this.avdeling = avdeling;
 	}
+	
+
+//	public List<Prosjekt> getProsjekter() {
+//		return prosjekt();
+//	}
+//
+//	public void setProsjekter(List<Prosjekt> prosjekter) {
+//		this.prosjekter = prosjekter;
+//	}
+
+	public List<ProsjektDeltagelse> getDeltagelser() {
+		return deltagelser;
+	}
+
+	public void setDeltagelser(List<ProsjektDeltagelse> deltagelser) {
+		this.deltagelser = deltagelser;
+	}
 
 	public Ansatt() {
-		
-	}
-	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato,
-			String stilling, int maanedslonn, Avdeling avdeling) {
 
-//		this.ansattId = ansattId;
+	}
+
+	public Ansatt(int ansattId,String brukernavn, String fornavn, String etternavn, LocalDate ansettelsedato, String stilling,
+			int maanedslonn, Avdeling avdeling) {
+
+		this.ansattId = ansattId;
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
@@ -94,11 +115,16 @@ public class Ansatt {
 		this.avdeling = avdeling;
 
 	}
-
+	
+	  public void leggTilProsjektdeltagelse(ProsjektDeltagelse prosjektdeltagelse) {
+	        deltagelser.add(prosjektdeltagelse);
+	    }
+	  
+	  
 
 	@Override
 	public String toString() {
-		return "Ansatt [ansattId="+ ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
+		return "Ansatt [ansattId=" + ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
 				+ etternavn + ", ansettelsedato=" + ansettelsedato + ", stilling=" + stilling + ", maanedslonn="
 				+ maanedslonn + ", avdeling=" + avdeling.getNavn() + "]";
 	}

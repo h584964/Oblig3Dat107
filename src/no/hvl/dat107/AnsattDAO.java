@@ -1,6 +1,6 @@
 package no.hvl.dat107;
 
-import java.util.Collection;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -83,14 +83,14 @@ public class AnsattDAO {
 
 				em.merge(a); // tar objektet å knytter det sammen med databasen
 			}
-//			a.leggTilStilling(stilling);
+
 
 			tx.commit();
 		} catch (Throwable e) {
 			e.printStackTrace();
-//			if (tx.isActive()) {
+
 			tx.rollback();
-//			}
+
 		} finally {
 			em.close();
 		}
@@ -121,8 +121,6 @@ public class AnsattDAO {
 		EntityTransaction tx = em.getTransaction();
 		try {
 			tx.begin();
-//			a = new Ansatt();
-			// Legger til ny ansatt
 			em.persist(a);
 			tx.commit();
 		} catch (Throwable e) {
@@ -132,5 +130,7 @@ public class AnsattDAO {
 			em.close();
 		}
 	}
+	
+	 
 
 }
