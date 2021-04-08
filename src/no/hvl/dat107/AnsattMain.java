@@ -161,6 +161,7 @@ public class AnsattMain {
 				} else {
 					System.out.println("Ansatt er allerde sjef i en annen avdeling og kan ikke flyttes");
 				}
+				
 
 			} else if (valg == 11) {
 				System.out.println("Skriv inn prosjektId");
